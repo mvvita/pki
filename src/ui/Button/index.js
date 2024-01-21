@@ -1,8 +1,8 @@
 import './style.sass'
 import cx from 'classnames'
 
-const Button = ({ onClick, to, white, children }) => {
-    const cs = cx('Button', {
+const Button = ({ className, onClick, to, white, children }) => {
+    const cs = cx('Button', className, {
         'Button--white': white,
     })
 

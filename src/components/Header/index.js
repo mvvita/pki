@@ -7,6 +7,7 @@ const Header = () => {
     const onLogin = () => {
         navigate('login')
     }
+
     return <div className="Header">
         <div className='Header__logo'>Slatkomir</div>
         <div className='Header__links'>
