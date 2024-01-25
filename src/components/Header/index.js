@@ -9,7 +9,7 @@ const Header = () => {
     }
 
     return <div className="Header">
-        <div className='Header__logo'>Slatkomir</div>
+        <div onClick={() => navigate('/')} className='Header__logo'>Slatkomir</div>
         <div className='Header__links'>
             <Link to='about'>O nama</Link>
             <Link to='articles'>Pregled artikala</Link>

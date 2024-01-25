@@ -1,4 +1,25 @@
-.Landing
+.About
+	&__content
+		padding: 40px
+
+	&__contentHeader
+		margin-top: 0
+		font-weight: 400
+		font-size: 24px
+
+	&__paragraph
+		color: #566270
+		text-align: justify
+
+	&__mapContainer
+		margin-top: 40px
+		display: flex
+		align-items: center
+		// justify-content: space-around
+
+	&__map
+		max-width: min(1024px, calc(100vw - 96px))
+
 	&__imageText
 		color: #FFF
 		font-size: 36px
@@ -17,5 +38,5 @@
 		background-image: linear-gradient(90deg, #008FC7, #00BAED)
 
 	&__image
-		max-width: 720px
+		max-width: max(720px, 100vw)
 		max-height: 480px
