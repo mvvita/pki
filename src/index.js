@@ -8,6 +8,8 @@ import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import About from './pages/About'
+import Articles from './pages/Articles'
+import SingleArticle from './pages/SingleArticle'
 
 const router = createBrowserRouter([
 	{
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
 			{
 				path: 'about',
 				element: <About />,
+			},
+			{
+				path: 'articles',
+				element: <Articles />,
+			},
+			{
+				path: 'articles/:articleId',
+				element: <SingleArticle />,
 			},
 		],
 	},

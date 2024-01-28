@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Carousel from '../../ui/Carousel'
 import Button from '../../ui/Button'
 import { promotions, userRatings } from './mock'
+import ReactStars from 'react-stars'
 
 const Promotion = item => {
 	return (
@@ -32,7 +33,10 @@ const UserRating = item => {
 				<div className='Landing__userRatingContent'>
 					<div className='Landing__userRatingContentDescription'>
 						<div className='Landing__userRatingContentHeader'>{item.name}</div>
-						<div className=''>{item.comment}</div>
+						<ReactStars color2='#000000' size={32} count={5} value={item.rating} edit={false} />
+						<div style={{ marginTop: '20px' }} className=''>
+							"{item.comment}"
+						</div>
 					</div>
 				</div>
 			</div>
@@ -62,7 +66,13 @@ const Landing = () => {
 			</div>
 			<div className='Landing__carousel Landing__carousel--yellow'>
 				<div className='Landing__subheader'>šta naši korisnici misle o nama</div>
-				<Carousel timeout={3500} className='Landing__slides' items={userRatings} ItemComponent={UserRating} />
+				<Carousel
+					arrowFill='#00000080'
+					timeout={3500}
+					className='Landing__slides'
+					items={userRatings}
+					ItemComponent={UserRating}
+				/>
 			</div>
 		</div>
 	)

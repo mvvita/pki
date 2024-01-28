@@ -3,7 +3,7 @@ import cx from 'classnames'
 import Icon from '../Icon'
 import { useEffect, useState } from 'react'
 
-const Carousel = ({ className, items, ItemComponent, timeout = 5000 }) => {
+const Carousel = ({ arrowFill, className, items, ItemComponent, timeout = 5000 }) => {
 	const [currentIndex, setCurrentIndex] = useState(0)
 	const [toggleInterval, setToggleInterval] = useState(null)
 
@@ -49,7 +49,7 @@ const Carousel = ({ className, items, ItemComponent, timeout = 5000 }) => {
 				className='Carousel__icon Carousel__icon--left'
 				name='arrow_head'
 				width='24px'
-				fill='#D9D9D9'
+				fill={arrowFill || '#D9D9D9'}
 				height='24px'
 			/>
 			<Icon
@@ -57,7 +57,7 @@ const Carousel = ({ className, items, ItemComponent, timeout = 5000 }) => {
 				className='Carousel__icon Carousel__icon--right'
 				name='arrow_head'
 				width='24px'
-				fill='#D9D9D9'
+				fill={arrowFill || '#D9D9D9'}
 				height='24px'
 			/>
 			<div className='Carousel__content' style={{ marginLeft: `-${currentIndex * 100}%` }}>

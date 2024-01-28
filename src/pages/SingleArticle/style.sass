@@ -1,0 +1,105 @@
+.SingleArticle
+	display: flex
+	align-items: center
+	justify-content: space-around
+	padding-bottom: 72px
+
+	&__content
+		max-width: 968px
+		margin-top: 48px
+		padding: 0 48px
+
+		& > .Input
+			width: 513px
+
+	.ArticleContainer
+		padding: 24px 48px
+		background: #EDE5FF
+		border-radius: 24px
+
+		&__row
+			display: flex
+			align-items: center
+			justify-content: space-between
+
+	.Article
+		display: flex
+		align-items: center
+		justify-content: space-between
+
+		&__image
+			width: 240px
+			min-width: 240px
+			height: 240px
+			min-height: 240px
+			border-radius: 24px
+			margin-right: 48px
+
+		&__content
+			display: flex
+			flex-direction: column
+			height: 240px
+			justify-content: space-between
+
+		&__contentSummary
+			text-align: justify
+
+		&__contentHeader
+			text-transform: uppercase
+			font-size: 32px
+			margin-bottom: 24px
+
+		&__contentHeaderPrice
+			text-transform: uppercase
+			font-size: 32px
+			margin-bottom: 24px
+			font-weight: 600
+
+		&__contentDescription
+			max-height: 172px
+			overflow: hidden
+
+		&__contents
+			margin-top: 48px
+
+		&__actions
+			margin-top: 48px
+			display: flex
+			align-items: center
+
+			> *
+				margin-right: 8px
+
+			.Input
+				width: 8px
+				font-size: 12px
+
+	&__textarea
+		min-width: 480px
+		resize: none
+		font-size: 14px
+		margin-top: 16px !important
+
+	&__header
+		font-size: 28px
+		text-transform: uppercase
+
+	&__commentForm
+		margin-top: 48px
+
+	.SingleArticleComments
+		margin-top: 24px
+
+		.SingleArticleComment
+			background: #F9EBEB
+			padding: 12px 24px
+			border-radius: 20px
+			margin-top: 24px
+
+			&__comment
+				margin: 16px 0
+				font-style: italic
+
+			&__date
+				text-align: right
+				font-style: italic

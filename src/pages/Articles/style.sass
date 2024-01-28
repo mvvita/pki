@@ -1,0 +1,105 @@
+.Articles
+	display: flex
+	align-items: center
+	justify-content: space-around
+
+	&__content
+		max-width: 968px
+		margin-top: 48px
+		padding: 0 48px
+
+		& > .Input
+			width: 513px
+
+	.Articles__drawer
+		display: flex
+		align-items: center
+		margin-top: 16px
+
+		& > div
+			cursor: pointer
+			color: #566270
+			min-width: min(20vw, 220px)
+			max-width: 220px !important
+			padding: 12px 24px
+			text-align: center
+			border: 1px solid #36A6E2
+
+			&:first-of-type
+				border-right: none
+
+	&__pagerContainer
+		display: flex
+		justify-content: space-around
+		margin-bottom: 72px
+
+	&__pager
+		display: flex
+
+		& > div
+			margin-right: 12px
+			font-size: 16px
+			cursor: pointer
+			border: 1px solid #566270
+			color: #566270
+			display: flex
+			align-items: center
+			justify-content: space-around
+			width: 24px
+			height: 24px
+			border-radius: 4px
+
+			&:last-of-type
+				margin-right: 0
+
+			&.Articles__pageSelected
+				color: #36A6E2
+				border-color: #36A6E2
+
+	.SelectedType
+		background: #36A6E2
+		color: #FFFFFF !important
+
+	.ArticlesList
+		margin-bottom: 48px
+
+	.SingleArticle
+		border-radius: 24px
+		padding: 24px 48px
+		display: flex
+		align-items: center
+		justify-content: space-between
+		margin-top: 48px
+
+		&:nth-of-type(odd)
+			background: #EDE5FF
+
+		&:nth-of-type(even)
+			background: #F7B7B7
+
+		&__image
+			width: 240px
+			min-width: 240px
+			height: 240px
+			min-height: 240px
+			border-radius: 24px
+			margin-right: 48px
+
+		&__content
+			display: flex
+			flex-direction: column
+			height: 240px
+			justify-content: space-between
+
+		&__contentSummary
+			text-align: justify
+
+		&__contentHeader
+			text-transform: uppercase
+			font-size: 32px
+			margin-bottom: 36px
+
+		&__contentDescription
+			max-height: 172px
+			overflow: hidden
+
