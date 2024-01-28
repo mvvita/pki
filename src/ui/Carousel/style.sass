@@ -1,0 +1,28 @@
+.Carousel
+	position: relative
+	overflow-x: hidden
+
+	&__icon
+		position: absolute
+		top: calc(50% - 12px)
+		cursor: pointer
+
+		&--left
+			left: 0
+			rotate: 180deg
+
+		&--right
+			right: 0
+
+	&__content
+		width: 100%
+		transition: margin-left 0.5s ease
+		display: flex
+		align-items: center
+		justify-content: space-between
+
+		& > div
+			min-width: 100%
+			display: flex
+			align-items: center
+			justify-content: space-around
