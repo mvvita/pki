@@ -1,0 +1,77 @@
+.Order
+	display: flex
+	align-items: center
+	justify-content: space-around
+
+	&__content
+		margin-top: 48px
+		margin-bottom: 72px
+
+	&__header
+		font-size: 28px
+		text-transform: uppercase
+
+	.mt60
+		margin-top: 60px
+
+	&__order
+		border-radius: 24px
+		padding: 24px 32px
+		background: #d9d9d980
+		position: relative
+		margin-top: 24px
+		min-width: 480px
+
+		& .OrderBadge
+			position: absolute
+			top: 0
+			right: 0
+			display: flex
+			align-items: center
+			justify-content: space-around
+			width: 120px
+			height: 32px
+			color: #FFF
+			border-radius: 0 24px 0 0
+
+		&--green > .OrderBadge
+			background: #10E23E
+
+		&--red  > .OrderBadge
+			background: #E21036
+
+		&--yellow  > .OrderBadge
+			background: #E2CD10
+
+		& .OrderNumber
+			height: 40px
+			color: #000000
+			font-size: 24px
+
+		.OrderArticles
+			margin-top: 16px
+			display: grid
+			grid-template-columns: auto 60px 80px
+
+			& > div
+				font-size: 18px
+				display: flex
+				align-items: center
+
+			&__separator
+				margin: 16px 0
+				border-top: 1px solid #000000
+				grid-column: 1 / 4
+
+			&__price
+				font-size: 24px
+				font-weight: 600
+
+			&__name
+				display: flex
+
+				img
+					margin-right: 12px
+					width: 32px
+					border-radius: 12px
+					height: 32px
