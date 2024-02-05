@@ -21,7 +21,7 @@ const Carousel = ({ arrowFill, className, items, ItemComponent, timeout = 5000 }
 			return
 		}
 
-		if (calculatedIndex == items.length) {
+		if (calculatedIndex === items.length) {
 			setCurrentIndex(0)
 			return
 		}

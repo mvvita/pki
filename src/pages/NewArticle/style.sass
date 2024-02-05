@@ -1,0 +1,52 @@
+.NewArticle
+	display: flex
+	align-items: center
+	justify-content: space-around
+
+	.Input
+		width: 320px
+
+	.Select
+		width: 320px
+
+	.Textarea
+		resize: none
+		width: 320px
+
+	.ErrorMessage__message
+		width: 320px
+
+	&__form
+		margin-top: 48px
+		margin-bottom: 48px
+		max-width: 320px
+
+	.ImagePreview
+		width: 124px
+		height: 124px
+
+	.Modal
+		position: fixed
+		top: 0
+		bottom: 0
+		left: 0
+		right: 0
+		display: flex
+		align-items: center
+		justify-content: space-around
+		background: rgba(0, 0, 0, 0.3)
+
+		.ModalImage
+			width: 240px
+			height: 240px
+			cursor: pointer
+
+		&__content
+			background: #FFFFFF
+			border-radius: 4px
+			padding: 24px
+			display: grid
+			grid-template-columns: 1fr 1fr
+			max-height: 50vh
+			overflow: scroll
+			grid-gap: 24px

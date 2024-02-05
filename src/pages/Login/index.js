@@ -1,14 +1,45 @@
 import './style.sass'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Button from '../../ui/Button'
 import Input from '../../ui/Input'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import AppContext from '../../context'
+import ErrorMessage from '../../ui/ErrorMessage'
 
 const Login = () => {
+	const { state, setState } = useContext(AppContext)
 	const [form, setForm] = useState({ username: '', password: '' })
+	const [error, setError] = useState([])
+	const navigate = useNavigate()
 
 	const updateField = e => {
 		setForm(f => ({ ...f, [e.target.name]: e.target.value }))
+	}
+
+	const onSubmit = () => {
+		let errors = []
+
+		if (!form.username) {
+			errors.push('Unesite korisnicko ime')
+		}
+
+		if (!form.password) {
+			errors.push('Unesite lozinku')
+		}
+
+		setError(errors)
+		if (errors.length > 0) {
+			return
+		}
+
+		const user = state.users.find(u => u.username === form.username && u.password === form.password)
+		if (!user) {
+			setError(['Pogresni kredencijali.'])
+			return
+		}
+
+		setState({ loggedInUser: user.id })
+		navigate('/articles')
 	}
 
 	return (
@@ -25,7 +56,10 @@ const Login = () => {
 						ovde.
 					</Link>
 				</div>
-				<Button className='u-mt-16'>Prijava</Button>
+				<ErrorMessage className='u-mt-16' messages={error} />
+				<Button onClick={onSubmit} className='u-mt-16'>
+					Prijava
+				</Button>
 			</div>
 		</div>
 	)

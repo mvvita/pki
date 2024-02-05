@@ -1,7 +1,6 @@
 import './style.sass'
-import backgroundImage from '../Landing/[removal.ai]_eb8ebcc3-f3b9-432c-992d-e441ee26013a-candle-cupcake-happy-birthday-happy-birthday-wallpaper-preview-transformed.png'
-import mapImage from './map.png'
 import { Link } from 'react-router-dom'
+import Image from '../../ui/Image'
 
 const About = () => {
 	return (
@@ -17,7 +16,7 @@ const About = () => {
 						od vas.
 					</div>
 				</div>
-				<img className='About__image' alt='noimg' src={backgroundImage}></img>
+				<Image className='About__image' alt='noimg' src='backgroundImage'></Image>
 			</div>
 
 			<div className='About__content'>
@@ -49,7 +48,7 @@ const About = () => {
 						</p>
 					</div>
 					<div className='About__mapContainer'>
-						<img alt='noImg' className='About__map' src={mapImage}></img>
+						<Image alt='noImg' className='About__map' src='map'></Image>
 					</div>
 				</div>
 			</div>

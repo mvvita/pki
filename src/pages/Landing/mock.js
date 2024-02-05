@@ -1,8 +1,3 @@
-import cheeseCake from '../../assets/images/cheesecake.jpg'
-import mile from '../../assets/images/mile_iz_donje_posavine.jpg'
-import radovanSeselj from '../../assets/images/radovan_seselj.jpg'
-import vita from '../../assets/images/vita.jpg'
-
 export const promotions = [
 	{
 		id: 1,
@@ -29,7 +24,7 @@ export const promotions = [
 			'Neodoljivi kolač od sira još od vremena stare Grčke očarava slatkoljupce širom sveta.\n' +
 			'\n' +
 			'Ovaj osvežavajući kolač veoma je popularan i na našim prostorima, a za idealan čizkejk, recept koji je po vašem ukusu je sve što je potrebno!',
-		imgSrc: cheeseCake,
+		imgSrc: 'cheesecake',
 	},
 	{
 		id: 2,
@@ -56,7 +51,7 @@ export const promotions = [
 			'Neodoljivi kolač od sira još od vremena stare Grčke očarava slatkoljupce širom sveta.\n' +
 			'\n' +
 			'Ovaj osvežavajući kolač veoma je popularan i na našim prostorima, a za idealan čizkejk, recept koji je po vašem ukusu je sve što je potrebno!',
-		imgSrc: cheeseCake,
+		imgSrc: 'cheesecake',
 	},
 	{
 		id: 3,
@@ -83,7 +78,7 @@ export const promotions = [
 			'Neodoljivi kolač od sira još od vremena stare Grčke očarava slatkoljupce širom sveta.\n' +
 			'\n' +
 			'Ovaj osvežavajući kolač veoma je popularan i na našim prostorima, a za idealan čizkejk, recept koji je po vašem ukusu je sve što je potrebno!',
-		imgSrc: cheeseCake,
+		imgSrc: 'cheesecake',
 	},
 ]
 
@@ -93,20 +88,20 @@ export const userRatings = [
 		rating: 5,
 		name: 'Mile',
 		comment: 'Najbolja platforma za nalaženje kolača i torti.',
-		imgSrc: mile,
+		imgSrc: 'mile',
 	},
 	{
 		id: 1,
 		rating: 4.5,
 		name: 'Radovan',
 		comment: 'Najbolja platforma za nalaženje kolača i torti.',
-		imgSrc: radovanSeselj,
+		imgSrc: 'radovan',
 	},
 	{
 		id: 1,
 		rating: 5,
 		name: 'Vita',
 		comment: 'Najbolja platforma za nalaženje kolača i torti.',
-		imgSrc: vita,
+		imgSrc: 'vita',
 	},
 ]

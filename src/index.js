@@ -12,6 +12,7 @@ import Articles from './pages/Articles'
 import SingleArticle from './pages/SingleArticle'
 import UserProfile from './pages/UserProfile'
 import Order from './pages/Order'
+import NewArticle from './pages/NewArticle'
 
 const router = createBrowserRouter([
 	{
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'register',
+				element: <Register />,
+			},
+			{
+				path: 'profile/edit',
 				element: <Register />,
 			},
 			{
@@ -53,6 +58,10 @@ const router = createBrowserRouter([
 			{
 				path: 'cart',
 				element: <Order cart />,
+			},
+			{
+				path: 'new_article',
+				element: <NewArticle />,
 			},
 		],
 	},

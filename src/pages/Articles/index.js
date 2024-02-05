@@ -1,10 +1,10 @@
 import './style.sass'
-import { Link } from 'react-router-dom'
 import Button from '../../ui/Button'
 import Input from '../../ui/Input'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import cx from 'classnames'
-import { articles } from './mock'
+import Image from '../../ui/Image'
+import AppContext from '../../context'
 
 const types = {
 	CAKE: 'CAKE',
@@ -14,14 +14,14 @@ const types = {
 const SingleArticle = item => {
 	return (
 		<div className='SingleArticle'>
-			<img className='SingleArticle__image' src={item.imgSrc} />
+			<Image className='SingleArticle__image' src={item.imgSrc} />
 			<div className='SingleArticle__content'>
 				<div className='SingleArticle__contentDescription'>
 					<div className='SingleArticle__contentHeader'>{item.header}</div>
-					<div className='SingleArticle__contentSummary'>{item.content}</div>
+					<div className='SingleArticle__contentSummary'>{item.description}</div>
 				</div>
 				<div>
-					<Button>POGLEDAJ KOLAČ</Button>
+					<Button to={`/articles/${item.id}`}>POGLEDAJ KOLAČ</Button>
 				</div>
 			</div>
 		</div>
@@ -29,11 +29,26 @@ const SingleArticle = item => {
 }
 
 const Articles = () => {
+	const { state } = useContext(AppContext)
 	const [search, setSearch] = useState('')
 	const [type, setType] = useState(types.CAKE)
 	const [page, setPage] = useState(1)
 
-	const numPages = 4
+	const filteredCakes = state.cakes
+
+	const numPages = Math.ceil(filteredCakes.length / 3)
+
+	const changePage = newPage => {
+		if (newPage === 0) {
+			return
+		}
+
+		if (newPage >= numPages) {
+			return
+		}
+
+		setPage(newPage)
+	}
 
 	return (
 		<div className='Articles'>
@@ -49,22 +64,25 @@ const Articles = () => {
 					</div>
 				</div>
 				<div className='ArticlesList'>
-					{articles.map(a => (
+					{filteredCakes.slice((page - 1) * numPages, page * numPages).map(a => (
 						<SingleArticle {...a} key={a.id} />
 					))}
 				</div>
 				{numPages > 1 && (
 					<div className='Articles__pagerContainer'>
 						<div className='Articles__pager'>
-							<div>{'<'}</div>
+							<div onClick={() => changePage(page - 1)}>{'<'}</div>
 							{[...new Array(numPages)]
 								.map((_, i) => i + 1)
 								.map(v => (
-									<div className={cx({ Articles__pageSelected: v === page })} key={v}>
+									<div
+										onClick={() => changePage(v)}
+										className={cx({ Articles__pageSelected: v === page })}
+										key={v}>
 										{v}
 									</div>
 								))}
-							<div>{'>'}</div>
+							<div onClick={() => changePage(page + 1)}>{'>'}</div>
 						</div>
 					</div>
 				)}

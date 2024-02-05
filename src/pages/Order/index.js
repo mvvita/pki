@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './style.sass'
 import { user as mockUser } from '../UserProfile/mock'
 import cx from 'classnames'
 import Button from '../../ui/Button'
+import Image from '../../ui/Image'
+import AppContext from '../../context'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const statusCopy = {
 	approved: 'ODOBRENO',
@@ -11,9 +14,17 @@ const statusCopy = {
 }
 
 const Order = ({ cart }) => {
-	const user = mockUser
+	const { state, setState } = useContext(AppContext)
+	const params = useParams()
+	const navigate = useNavigate()
 
-	let orderNumber = 193
+	const user = state.me
+
+	let orderNumber = params?.orderId ? parseInt(params?.orderId, 10) : null
+
+	if (!state.me) {
+		return null
+	}
 
 	const getOrderClass = order => {
 		return cx('Order__order', {
@@ -38,6 +49,16 @@ const Order = ({ cart }) => {
 		return user.orders.find(o => o.number === orderNumber)
 	}
 
+	const onOrder = () => {
+		const orderNumber = Math.max(...state.orders.map(o => o.number).filter(e => e)) + 1
+		setState({
+			orders: state.orders.map(o =>
+				o.userId === user.id && !o.number ? { ...o, status: 'pending', number: orderNumber } : o,
+			),
+		})
+		navigate('/profile')
+	}
+
 	const o = getOrder()
 
 	return (
@@ -59,7 +80,7 @@ const Order = ({ cart }) => {
 						{o.articles.map(a => (
 							<React.Fragment key={a.name}>
 								<div className='OrderArticles__name'>
-									<img src={a.imgSrc} />
+									<Image src={a.imgSrc} />
 									{a.name}
 								</div>
 								<div style={{ justifyContent: 'center' }}>{a.quantity}</div>
@@ -75,7 +96,7 @@ const Order = ({ cart }) => {
 					</div>
 					{o.articles.length > 0 && !o.number && (
 						<div className='Order__button'>
-							<Button>PORUČI</Button>
+							<Button onClick={onOrder}>PORUČI</Button>
 						</div>
 					)}
 				</div>
