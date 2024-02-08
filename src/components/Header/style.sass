@@ -11,7 +11,7 @@
 	background: #FFFFFF
 	z-index: 100
 
-	&__nofification
+	&__notification
 		background: #FFC700
 		height: 32px
 		width: 32px
@@ -21,6 +21,49 @@
 		color: #FFF !important
 		border-radius: 50%
 		cursor: pointer
+		user-select: none
+		position: relative
+
+		.Header__notifications
+			position: absolute
+			top: calc(100% + 32px)
+			z-index: 100
+			right: -20px
+			cursor: default
+			color: #566270
+			text-transform: none
+			background: #FFFFFF
+			width: 324px
+			border: 1px solid #566270
+			pointer-events: none
+
+			&::before
+				content: ''
+				position: absolute
+				bottom: calc(100% + 24px)
+				transform: rotate(45deg) translateY(45px)
+				right: -6px
+				width: 16px
+				height: 16px
+				border-radius: 3px
+				background-color: #FFFFFF
+				border: 1px solid #566270
+				border-right: none
+				border-bottom: none
+				z-index: -4
+
+			.UnseenNotification
+				background: rgba(54, 166, 226, 0.3)
+
+			& > div
+				padding: 4px 8px
+				border-bottom: 1px solid #566270
+
+			&--header
+				font-size: 24px
+				color: #262B30
+
+
 
 	&__logo
 		font-size: 32px
@@ -51,3 +94,7 @@
 		.Button
 			margin-left: 16px
 			text-decoration: none
+			color: #FFFFFF
+
+			&--white
+				color: #36A6E2

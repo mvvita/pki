@@ -1,9 +1,47 @@
 import './style.sass'
 import Button from '../../ui/Button'
 import { Link, useNavigate } from 'react-router-dom'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import AppContext from '../../context'
 import Icon from '../../ui/Icon'
+import cx from 'classnames'
+
+const HeaderNotification = ({ me, notifications }) => {
+	const { state, setState } = useContext(AppContext)
+
+	const [visible, setVisible] = useState(false)
+
+	const toggleNotifications = () => {
+		if (visible) {
+			setState({
+				users: state.users.map(u =>
+					u.id === me.id ? { ...u, notifications: u.notifications.map(n => ({ ...n, seen: true })) } : u,
+				),
+			})
+		}
+		setVisible(v => !v)
+	}
+
+	return (
+		<div onClick={toggleNotifications} className='Header__notification'>
+			{notifications?.filter(s => !s.seen).length}
+			{visible && notifications?.length > 0 && (
+				<div className='Header__notifications'>
+					<div className='Header__notifications--header'>NOTIFIKACIJE</div>
+					{notifications.slice(0, 5).map(n => (
+						<div
+							className={cx({
+								UnseenNotification: !n.seen,
+							})}
+							key={n.text}>
+							{n.text}
+						</div>
+					))}
+				</div>
+			)}
+		</div>
+	)
+}
 
 const links = ({ me, onLogout }) => [
 	{
@@ -24,7 +62,7 @@ const links = ({ me, onLogout }) => [
 	{
 		route: 'notifications',
 		visible: () => me?.role === 'user',
-		render: () => <div className='Header__nofification'>{me?.notifications?.filter(s => !s.seen).length}</div>,
+		render: () => <HeaderNotification me={me} notifications={me?.notifications} />,
 	},
 	{
 		route: 'notifications',
@@ -34,6 +72,16 @@ const links = ({ me, onLogout }) => [
 				<Icon style={{ marginBottom: '-4px' }} width='32' height='32' name='cart' />
 			</Link>
 		),
+	},
+	{
+		route: 'orders',
+		visible: () => me?.role === 'manager',
+		render: () => <Link to='orders'>Porudzbine</Link>,
+	},
+	{
+		route: 'new_article',
+		visible: () => me?.role === 'manager',
+		render: () => <Link to='new_article'>Novi artikal</Link>,
 	},
 	{
 		route: 'login',

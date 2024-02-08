@@ -7,6 +7,8 @@ import mapImg from './images/map.png'
 import strawberry from './images/strawberry.png'
 import pinkCake from './images/pink_cake.png'
 import choco from './images/choco.png'
+import svarcvald from './images/svarcvald.png'
+import jastuk from './images/jastuk.png'
 
 const obj = {
 	cheesecake: cheesecake,
@@ -17,6 +19,8 @@ const obj = {
 	mile,
 	pinkCake,
 	choco,
+	svarcvald,
+	jastuk,
 	map: mapImg,
 }
 

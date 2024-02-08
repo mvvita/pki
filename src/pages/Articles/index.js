@@ -1,7 +1,7 @@
 import './style.sass'
 import Button from '../../ui/Button'
 import Input from '../../ui/Input'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import cx from 'classnames'
 import Image from '../../ui/Image'
 import AppContext from '../../context'
@@ -11,6 +11,17 @@ const types = {
 	COOKIE: 'COOKIE',
 }
 
+function truncate(str, maxlength) {
+	if (str.length <= maxlength) {
+		return str
+	}
+
+	const slicedString = str.slice(0, maxlength - 1)
+	const lastSpace = slicedString.lastIndexOf(' ', slicedString.length - 1)
+
+	return (lastSpace > 0 ? slicedString.slice(0, lastSpace) : slicedString) + '...'
+}
+
 const SingleArticle = item => {
 	return (
 		<div className='SingleArticle'>
@@ -18,10 +29,10 @@ const SingleArticle = item => {
 			<div className='SingleArticle__content'>
 				<div className='SingleArticle__contentDescription'>
 					<div className='SingleArticle__contentHeader'>{item.header}</div>
-					<div className='SingleArticle__contentSummary'>{item.description}</div>
+					<div className='SingleArticle__contentSummary'>{truncate(item.description, 220)}</div>
 				</div>
 				<div>
-					<Button to={`/articles/${item.id}`}>POGLEDAJ KOLAČ</Button>
+					<Button to={`/articles/${item.id}`}>POGLEDAJ ARTIKAL</Button>
 				</div>
 			</div>
 		</div>
@@ -34,7 +45,13 @@ const Articles = () => {
 	const [type, setType] = useState(types.CAKE)
 	const [page, setPage] = useState(1)
 
-	const filteredCakes = state.cakes
+	const filteredCakes = state.cakes.filter(c => {
+		return c.type === type && c.header.toLowerCase().includes(search.toLowerCase())
+	})
+
+	useEffect(() => {
+		setPage(1)
+	}, [search, type])
 
 	const numPages = Math.ceil(filteredCakes.length / 3)
 
@@ -43,7 +60,7 @@ const Articles = () => {
 			return
 		}
 
-		if (newPage >= numPages) {
+		if (newPage > numPages) {
 			return
 		}
 
@@ -64,7 +81,7 @@ const Articles = () => {
 					</div>
 				</div>
 				<div className='ArticlesList'>
-					{filteredCakes.slice((page - 1) * numPages, page * numPages).map(a => (
+					{filteredCakes.slice((page - 1) * 3, page * 3).map(a => (
 						<SingleArticle {...a} key={a.id} />
 					))}
 				</div>

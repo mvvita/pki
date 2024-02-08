@@ -1,0 +1,33 @@
+.AlertBox
+	padding: 16px
+	border-radius: 5px
+	color: #FFFFFF
+	position: fixed
+	animation: 1s showBlock
+	top: 48px
+	z-index: 200
+	left: calc(50vw - 24px)
+	max-width: 320px
+	text-align: center
+
+	&--fail
+		background-color: #E21036
+
+	&--success
+		background-color: #27D10B
+
+
+@keyframes showBlock
+	from
+		display: block
+		opacity: 0
+	to
+		opacity: 1
+		display: block
+
+@keyframes hideBlock
+	from
+		opacity: 1
+	to
+		opacity: 0
+		display: none

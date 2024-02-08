@@ -7,7 +7,7 @@ import AppContext from '../../context'
 import ErrorMessage from '../../ui/ErrorMessage'
 
 const Register = () => {
-	const { state, setState } = useContext(AppContext)
+	const { state, setState, setSuccessAlertMessage } = useContext(AppContext)
 	const navigate = useNavigate()
 	const location = useLocation()
 
@@ -78,6 +78,7 @@ const Register = () => {
 				...userFields,
 			}
 
+			setSuccessAlertMessage('Uspesno izmenjene informacije.')
 			setState({ users: state.users.map(u => (u.id === state.me.id ? updatedUser : u)) })
 		}
 
@@ -110,12 +111,14 @@ const Register = () => {
 					value={form.passwordConfirmation}
 					onChangeWithTarget={updateField}
 				/>
-				<div className='FormLabel u-mt-16'>
-					Vec imate nalog? Možete se prijaviti{' '}
-					<Link className='AppLink' to='/login'>
-						ovde.
-					</Link>
-				</div>
+				{!isEdit && (
+					<div className='FormLabel u-mt-16'>
+						Vec imate nalog? Možete se prijaviti{' '}
+						<Link className='AppLink' to='/login'>
+							ovde.
+						</Link>
+					</div>
+				)}
 				<ErrorMessage className='u-mt-16' messages={error} />
 				<Button onClick={onSubmit} className='u-mt-16'>
 					{isEdit ? 'Potvrdi' : 'Registracija'}

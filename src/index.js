@@ -13,6 +13,7 @@ import SingleArticle from './pages/SingleArticle'
 import UserProfile from './pages/UserProfile'
 import Order from './pages/Order'
 import NewArticle from './pages/NewArticle'
+import Orders from './pages/Orders'
 
 const router = createBrowserRouter([
 	{
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
 			{
 				path: 'new_article',
 				element: <NewArticle />,
+			},
+			{
+				path: 'orders',
+				element: <Orders />,
 			},
 		],
 	},

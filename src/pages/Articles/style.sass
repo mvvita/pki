@@ -5,11 +5,12 @@
 
 	&__content
 		max-width: 968px
+		min-width: calc(min(calc(100vw - 96px), 968px))
 		margin-top: 48px
 		padding: 0 48px
 
 		& > .Input
-			width: 513px
+			width: calc(min(calc(100vw - 126px), 516px))
 
 	.Articles__drawer
 		display: flex
@@ -45,8 +46,8 @@
 			display: flex
 			align-items: center
 			justify-content: space-around
-			width: 24px
-			height: 24px
+			width: 32px
+			height: 32px
 			border-radius: 4px
 
 			&:last-of-type
@@ -89,6 +90,7 @@
 			display: flex
 			flex-direction: column
 			height: 240px
+			text-overflow: ellipsis
 			justify-content: space-between
 
 		&__contentSummary

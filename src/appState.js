@@ -17,7 +17,8 @@ const useAppState = () => {
 		if (!lsState) {
 			setState(mockState)
 		} else {
-			setState(JSON.parse(lsState))
+			const { loggedInUser, ...rest } = JSON.parse(lsState)
+			setState(rest)
 		}
 
 		setLoaded(true)

@@ -14,7 +14,7 @@ const statusCopy = {
 }
 
 const Order = ({ cart }) => {
-	const { state, setState } = useContext(AppContext)
+	const { state, setState, setSuccessAlertMessage } = useContext(AppContext)
 	const params = useParams()
 	const navigate = useNavigate()
 
@@ -50,12 +50,14 @@ const Order = ({ cart }) => {
 	}
 
 	const onOrder = () => {
-		const orderNumber = Math.max(...state.orders.map(o => o.number).filter(e => e)) + 1
+		const orderNumber = Math.max(0, ...state.orders.map(o => o.number).filter(e => e)) + 1
 		setState({
 			orders: state.orders.map(o =>
 				o.userId === user.id && !o.number ? { ...o, status: 'pending', number: orderNumber } : o,
 			),
 		})
+
+		setSuccessAlertMessage('Uspesno ste porucili artikle!')
 		navigate('/profile')
 	}
 

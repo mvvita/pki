@@ -9,10 +9,11 @@ import Textarea from '../../ui/Textarea'
 import Select from '../../ui/Select'
 import Image from '../../ui/Image'
 
-const availableImages = ['strawberry', 'pinkCake', 'choco', 'cheesecake']
+const availableImages = ['strawberry', 'pinkCake', 'choco', 'cheesecake', 'svarcvald', 'jastuk']
 
 const ImageChooser = ({ image, onChooseImage }) => {
 	const [visible, setVisible] = useState(false)
+
 	const onImageClick = image => {
 		onChooseImage(image)
 		setVisible(false)
@@ -42,7 +43,7 @@ const ImageChooser = ({ image, onChooseImage }) => {
 }
 
 const NewArticle = () => {
-	const { state, setState } = useContext(AppContext)
+	const { state, setState, setSuccessAlertMessage } = useContext(AppContext)
 	const [form, setForm] = useState({ header: '', content: '', description: '', imgSrc: '', type: '' })
 	const [error, setError] = useState([])
 	const navigate = useNavigate()
@@ -64,8 +65,14 @@ const NewArticle = () => {
 			return
 		}
 
+		if (isNaN(form.price)) {
+			setError(['Cena mora biti ceo broj.'])
+			return
+		}
+
 		setState({ cakes: [...state.cakes, { ...form, id: +new Date(), comments: [] }] })
 		navigate('/articles')
+		setSuccessAlertMessage('Uspesno ste dodali artikal.')
 	}
 
 	return (

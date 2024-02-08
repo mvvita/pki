@@ -5,6 +5,19 @@ import Button from '../../ui/Button'
 import { promotions, userRatings } from './mock'
 import ReactStars from 'react-stars'
 import Image from '../../ui/Image'
+import AppContext from '../../context'
+import { useContext, useState } from 'react'
+
+function truncate(str, maxlength) {
+	if (str.length <= maxlength) {
+		return str
+	}
+
+	const slicedString = str.slice(0, maxlength - 1)
+	const lastSpace = slicedString.lastIndexOf(' ', slicedString.length - 1)
+
+	return (lastSpace > 0 ? slicedString.slice(0, lastSpace) : slicedString) + '...'
+}
 
 const Promotion = item => {
 	return (
@@ -14,10 +27,10 @@ const Promotion = item => {
 				<div className='Landing__promotionContent'>
 					<div className='Landing__promotionContentDescription'>
 						<div className='Landing__promotionContentHeader'>{item.header}</div>
-						<div className=''>{item.content}</div>
+						<div className=''>{truncate(item.description, 320)}</div>
 					</div>
 					<div>
-						<Button>POGLEDAJ KOLAČ</Button>
+						<Button to={`articles/${item.id}`}>POGLEDAJ ARTIKAL</Button>
 					</div>
 				</div>
 			</div>
@@ -45,6 +58,8 @@ const UserRating = item => {
 }
 
 const Landing = () => {
+	const { state } = useContext(AppContext)
+
 	return (
 		<div className='Landing'>
 			<div className='Landing__imageContainer'>
@@ -62,7 +77,7 @@ const Landing = () => {
 			</div>
 			<div className='Landing__carousel'>
 				<div className='Landing__subheader'>Iz Ponude Izdvajamo</div>
-				<Carousel className='Landing__slides' items={promotions} ItemComponent={Promotion} />
+				<Carousel className='Landing__slides' items={state.cakes.slice(0, 3)} ItemComponent={Promotion} />
 			</div>
 			<div className='Landing__carousel Landing__carousel--yellow'>
 				<div className='Landing__subheader'>šta naši korisnici misle o nama</div>
