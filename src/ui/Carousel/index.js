@@ -62,7 +62,7 @@ const Carousel = ({ arrowFill, className, items, ItemComponent, timeout = 5000 }
 			/>
 			<div className='Carousel__content' style={{ marginLeft: `-${currentIndex * 100}%` }}>
 				{items.map(i => (
-					<ItemComponent {...i} />
+					<ItemComponent key={i.id} {...i} />
 				))}
 			</div>
 		</div>

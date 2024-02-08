@@ -19,6 +19,7 @@ export const mockState = {
 				{ text: 'Admin je prihvatio vasu porudzbinu 3.', seen: true },
 			],
 			orders: [
+				{ userId: 1, articles: [{ name: 'Coko torta', imgSrc: 'choco', quantity: 1, price: '1230' }] },
 				{
 					userId: 1,
 					articles: [
@@ -179,6 +180,12 @@ export const mockState = {
 	orders: [
 		{
 			userId: 1,
+			articles: [{ name: 'Coko torta', imgSrc: 'choco', quantity: 1, price: '1230' }],
+			status: 'pending',
+			number: 7,
+		},
+		{
+			userId: 1,
 			articles: [
 				{ name: 'Coko torta', imgSrc: 'choco', quantity: 12, price: '1230' },
 				{ name: 'Plazmalina', imgSrc: 'strawberry', quantity: 1, price: '700' },
@@ -235,5 +242,5 @@ export const mockState = {
 			number: 1,
 		},
 	],
-	loggedInUser: 2,
+	loggedInUser: null,
 }

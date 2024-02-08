@@ -1,3 +1,5 @@
+@import '/src/style'
+
 .Footer
 	background: #36A6E2
 	color: #FFFFFF
@@ -9,16 +11,30 @@
 	&__copyright
 		margin-top: 40px
 
+		+max-width(830px)
+			text-align: center
+
 	&__links
 		display: flex
 		width: 100%
 		justify-content: space-between
 
+		+max-width(830px)
+			flex-direction: column
+			align-items: center
+
 		> div
 			width: 240px
 
+			+max-width(830px)
+				text-align: center
+				margin-top: 24px
+
 			&:last-of-type
 				margin-right: calc(0.3 * calc(100vw - 720px))
+
+				+max-width(830px)
+					margin-right: 0
 
 		.FooterLink
 			margin-top: 16px

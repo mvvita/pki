@@ -1,3 +1,5 @@
+@import '/src/style'
+
 .UserProfile
 	display: flex
 	align-items: center
@@ -6,6 +8,7 @@
 	&__content
 		margin-top: 48px
 		margin-bottom: 72px
+		max-width: calc(100vw - 48px)
 
 	&__header
 		font-size: 28px
@@ -24,6 +27,11 @@
 		grid-template-columns: 200px auto
 		grid-row-gap: 16px
 		margin-bottom: 32px
+
+		+max-width(830px)
+			min-width: calc(min(60vw, 320px))
+			grid-template-columns: 120px auto
+
 
 	&__answer
 		color: #000000

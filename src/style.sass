@@ -6,6 +6,10 @@
 	font-family: "Muli"
 	src: url('../public/Muli.ttf')
 
+=max-width($res)
+	@media screen and (max-width: $res - 0.0001)
+		@content
+
 .App
 	font-family: Muli, serif
 	height: calc(100vh - 81.5px)

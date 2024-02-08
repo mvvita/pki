@@ -1,3 +1,5 @@
+@import '/src/style'
+
 .Landing
 	&__imageText
 		color: #FFF
@@ -6,7 +8,11 @@
 		position: absolute
 		text-transform: uppercase
 		bottom: 50%
-		left: calc(40px + calc(0.3* calc( 100vw - 720px)))
+		left: calc(40px + calc(0.3 * calc(100vw - 720px)))
+
+		+max-width(830px)
+			left: 40px
+			font-size: 28px
 
 	&__imageContainer
 		position: relative
@@ -29,6 +35,9 @@
 	&__slides
 		margin: 40px 0
 
+		+max-width(830px)
+			margin: 20px 0
+
 	&__subheader
 		text-align: center
 		font-size: 40px
@@ -39,12 +48,22 @@
 		width: fit-content
 		max-width: 80%
 
+		+max-width(830px)
+			flex-direction: column
+			align-items: center
+
 		img
 			height: calc(320px + 4vw)
 			width: calc(320px + 4vw)
 			min-height: calc(320px + 4vw)
 			min-width: calc(320px + 4vw)
 			border-radius: 24px
+
+			+max-width(830px)
+				height: calc(280px + 4vw)
+				width: calc(280px + 4vw)
+				min-height: calc(280px + 4vw)
+				min-width: calc(280px + 4vw)
 
 
 	&__promotionContent
@@ -54,21 +73,39 @@
 		flex-direction: column
 		justify-content: space-between
 
+		+max-width(830px)
+			align-items: center
+
+			.Button
+				margin-top: 24px
+
 	&__promotionContentDescription
 		overflow: hidden
 
+		+max-width(830px)
+			text-align: center
+
 		div
 			max-height: 172px
+
 
 	&__promotionContentHeader
 		text-transform: uppercase
 		font-size: 32px
 		margin-bottom: 36px
 
+		+max-width(830px)
+			margin-top: 24px
+
 	&__userRating
 		display: flex
 		width: fit-content
 		max-width: 80%
+
+
+		+max-width(830px)
+			flex-direction: column
+			align-items: center
 
 		img
 			height: calc(320px + 4vw)
@@ -77,6 +114,13 @@
 			min-width: calc(320px + 4vw)
 			border-radius: 50%
 
+
+			+max-width(830px)
+				height: calc(280px + 4vw)
+				width: calc(280px + 4vw)
+				min-height: calc(280px + 4vw)
+				min-width: calc(280px + 4vw)
+
 	&__userRatingContent
 		max-width: 480px
 		margin-left: 24px
@@ -84,8 +128,20 @@
 		flex-direction: column
 		justify-content: space-between
 
+		+max-width(830px)
+			align-items: center
+
+			.Button
+				margin-top: 24px
+
 	&__userRatingContentDescription
 		overflow: hidden
+
+		+max-width(830px)
+			text-align: center
+			display: flex
+			align-items: center
+			flex-direction: column
 
 		div
 			max-height: 172px
@@ -95,4 +151,7 @@
 		font-size: 32px
 		margin-top: 12px
 		margin-bottom: 24px
+
+		+max-width(830px)
+			margin-top: 24px
 

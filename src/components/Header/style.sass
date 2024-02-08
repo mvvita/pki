@@ -1,3 +1,5 @@
+@import '/src/style'
+
 .Header
 	position: fixed
 	top: 0
@@ -81,6 +83,63 @@
 		justify-content: flex-end
 		text-transform: uppercase
 
+		+max-width(830px)
+			display: none
+
+		& > *
+			margin-left: 16px
+			color: #36A6E2
+			text-decoration: none
+
+			&:hover
+				cursor: pointer
+				text-decoration: underline
+
+	.HeaderMobileMenu
+		display: none
+		position: relative
+
+		+max-width(830px)
+			display: flex
+
+		.HeaderMobileMenu__content
+			position: fixed
+			left: 0
+			right: 0
+			top: 80px
+			display: flex
+			flex-direction: column
+			align-items: center
+			background: #FFFFFF
+			padding-bottom: 24px
+			border-bottom: 1px solid #36A6E2
+
+			& > *
+				margin-top: 16px
+				color: #36A6E2
+				text-decoration: none
+
+				&:hover
+					cursor: pointer
+					text-decoration: underline
+
+			.Button
+				text-decoration: none !important
+				color: #FFFFFF
+
+				&--white
+					color: #36A6E2
+
+	&__linksMobile
+		display: none
+		width: 100%
+		align-items: center
+		justify-content: flex-end
+		text-transform: uppercase
+
+		+max-width(830px)
+			display: flex
+
 		& > *
 			margin-left: 16px
 			color: #36A6E2
@@ -92,9 +151,14 @@
 
 
 		.Button
-			margin-left: 16px
-			text-decoration: none
+			text-decoration: none !important
 			color: #FFFFFF
 
 			&--white
 				color: #36A6E2
+
+	.Button
+		text-decoration: none !important
+
+		&:hover
+			text-decoration: none !important

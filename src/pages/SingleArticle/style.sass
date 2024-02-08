@@ -1,13 +1,19 @@
+@import '/src/style'
+
 .SingleArticlePage
 	display: flex
 	align-items: center
 	justify-content: space-around
 	padding-bottom: 72px
 
+
 	&__content
 		max-width: 968px
 		margin-top: 48px
 		padding: 0 48px
+
+		+max-width(830px)
+			max-width: 100vw
 
 		& > .Input
 			width: 513px
@@ -22,10 +28,21 @@
 			align-items: center
 			justify-content: space-between
 
+			+max-width(830px)
+				flex-direction: column
+				align-items: center
+				justify-content: unset
+
 	.Article
 		//display: flex
 		//align-items: center
 		//justify-content: space-between
+
+		+max-width(830px)
+			display: flex
+			align-items: center
+			flex-direction: column
+			text-align: center
 
 		&__image
 			float: left
@@ -35,6 +52,14 @@
 			min-height: 240px
 			border-radius: 24px
 			margin-right: 48px
+
+			+max-width(830px)
+				float: unset
+				width: 320px
+				min-width: 320px
+				height: 320px
+				min-height: 320px
+				margin-right: 0
 
 		&__content
 			display: flex
@@ -76,7 +101,7 @@
 				font-size: 12px
 
 	&__textarea
-		min-width: 480px
+		min-width: min(calc(100vw - 96px), 480px)
 		resize: none
 		font-size: 14px
 		margin-top: 16px !important

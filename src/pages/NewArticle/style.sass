@@ -1,3 +1,5 @@
+@import '/src/style'
+
 .NewArticle
 	display: flex
 	align-items: center
@@ -50,3 +52,6 @@
 			max-height: 50vh
 			overflow: scroll
 			grid-gap: 24px
+
+			+max-width(830px)
+				grid-template-columns: 1fr
